@@ -1,25 +1,27 @@
-drop database if exists roster;
-create database roster;
+  
+create database initech;
 
-use roster;
+use initech;
 
-create table employee(
-    id int auto_increment not null,
-    first_name varchar(30) not null,
-    last_name varchar(30) not null,
-    roleID int not null,
-    manager_id int default null,
-    primary key(id)
+create table department (
+id INTEGER(11) AUTO_INCREMENT NOT NULL,
+name VARCHAR(30) NOT NULL,
+PRIMARY KEY (id)
 );
 
-create table role(
-    title varchar(30) not null,
-    salary decimal(10,2) not null, 
-    department_id int default 1 null
+create table role (
+id INTEGER(11) AUTO_INCREMENT NOT NULL,
+title VARCHAR(30) NOT NULL,
+salary DECIMAL(10,2) NOT NULL,
+department_id INTEGER(11) NOT NULL,
+PRIMARY KEY (id)
 );
 
-create table department(
-name varchar(30) not null
+create table employees (
+id INTEGER(11) AUTO_INCREMENT not null,
+first_name VARCHAR(30) NOT NULL,
+last_name VARCHAR(30) NOT NULL,
+role_id INTEGER(11),
+manager_id INTEGER(11) NULL,
+PRIMARY KEY(id)
 );
-
-select * from employee, role, department;
